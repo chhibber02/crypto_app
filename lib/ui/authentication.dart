@@ -12,8 +12,8 @@ class Authentication extends StatefulWidget {
 }
 
 class _AuthenticationState extends State<Authentication> {
-  TextEditingController _emailField = TextEditingController();
-  TextEditingController _passwordField = TextEditingController();
+  final TextEditingController _emailField = TextEditingController();
+  final TextEditingController _passwordField = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,38 +26,43 @@ class _AuthenticationState extends State<Authentication> {
             color: Colors.blueAccent,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //email field
-              TextFormField(
-                controller: _emailField,
-                decoration: const InputDecoration(
-                  hintText: "example@email.com",
-                  hintStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  labelText: "Email",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+              Container(
+                width: MediaQuery.of(context).size.width / 1.3,
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(color: Colors.white),
+                  controller: _emailField,
+                  decoration: const InputDecoration(
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
 
+              SizedBox(height: MediaQuery.of(context).size.height / 35),
+
               // password field
-              TextFormField(
-                controller: _passwordField,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "password",
-                  hintStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  labelText: "Password",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+              Container(
+                width: MediaQuery.of(context).size.width / 1.3,
+                child: TextFormField(
+                  style: TextStyle(color: Colors.white),
+                  controller: _passwordField,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    labelText: "Password",
+                    labelStyle: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
+
+              SizedBox(height: MediaQuery.of(context).size.height / 15),
 
               // register button
               Container(
@@ -85,6 +90,8 @@ class _AuthenticationState extends State<Authentication> {
                   child: const Text("Register"),
                 ),
               ),
+
+              SizedBox(height: MediaQuery.of(context).size.height / 25),
 
               // login button
               Container(
